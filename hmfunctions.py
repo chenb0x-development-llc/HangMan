@@ -2,7 +2,7 @@
 
 import random
 
-def display_hangman(mistakes):
+def display_hangman(mistakes: int) -> None:
     """
     Displays current hangman status according to mistakes made.
     """
@@ -17,7 +17,7 @@ def display_hangman(mistakes):
         print(hangman[h])
 
 
-def generate_word():
+def generate_word() -> str:
     """
     Returns a random word from wordlist.txt
     """
@@ -25,5 +25,18 @@ def generate_word():
     lines = f.read().splitlines()
     return random.choice(lines)
 
-print(generate_word())
- 
+
+def display_blanks(word: str, guesses: list) -> str:
+    """
+    Displays characters guessed and blanks left.
+    """
+    blanks = list('_' * len(word))
+    
+    return blanks
+
+
+guessed = []
+game_word = generate_word()
+print(game_word)
+print(*display_blanks(game_word, guessed))
+  
