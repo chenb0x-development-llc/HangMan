@@ -7,13 +7,13 @@ def display_hangman(mistakes: int) -> None:
     Displays current hangman status according to mistakes made.
     """
 
-    hangman = ['       ',
-               '   0   ',
-               ' --|-- ',
+    hangman = ['   0   ',
+               '---|---',
                '   |   ',
-               '  / \  ']
+               '  / \  ',
+               '_/   \_']
 
-    for h in range(1,mistakes):
+    for h in range(0,mistakes):
         print(hangman[h])
 
 
@@ -38,5 +38,4 @@ def display_blanks(word: str, guesses: list) -> str:
 guessed = []
 game_word = generate_word()
 print(game_word)
-print(*display_blanks(game_word, guessed))
-  
+print(*display_blanks(game_word, guessed)) 
