@@ -30,12 +30,16 @@ def display_blanks(word: str, guesses: list) -> str:
     """
     Displays characters guessed and blanks left.
     """
-    blanks = list('_' * len(word))
-    
+    blanks = '_' * len(word)
+
+    for i in range(0, len(word)):
+        char = word[i]
+        if char in guesses:
+            blanks = blanks[:i] + char + blanks[i + 1:]
     return blanks
 
 
-guessed = []
+guessed = ['r', 's', 't', 'l', 'n', 'e']
 game_word = generate_word()
 print(game_word)
 print(*display_blanks(game_word, guessed)) 
