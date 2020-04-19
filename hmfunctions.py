@@ -42,4 +42,4 @@ def display_blanks(word: str, guesses: list) -> str:
 guessed = ['r', 's', 't', 'l', 'n', 'e']
 game_word = generate_word()
 print(game_word)
-print(*display_blanks(game_word, guessed)) 
+print(display_blanks(game_word, guessed)) 
