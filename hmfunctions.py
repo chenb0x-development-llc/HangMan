@@ -43,29 +43,34 @@ def display_blanks(word: str, guesses: list) -> str:
             blanks = blanks[:i] + char + blanks[i + 1:]
     return blanks
 
-
-correct = []
-incorrect = []
-mistakes = 0
-game_word = generate_word()
-while mistakes <= 4:
-    letter = str(input('Please input a letter: '))
-    if letter in game_word:
-        if letter in correct:
-            print(f'You have already guessed {letter}')
+playagain = 1
+while playagain == 1:
+    correct = []
+    incorrect = []
+    mistakes = 0
+    game_word = generate_word()
+    print('Welcome to Hangman!')
+    print(display_blanks(game_word, correct))
+    while mistakes <= 4:
+        letter = str(input('Please input a letter: '))
+        if letter in game_word:
+            if letter in correct:
+                print(f'You have already guessed {letter}')
+            else:
+                correct.append(letter)
+                print(display_blanks(game_word, correct))
+                print(f'Correct guesses: {correct}')
         else:
-            correct.append(letter)
-            print(display_blanks(game_word, correct))
-            print(f'Correct guesses: {correct}')
-    else:
-        if letter in incorrect:
-            print(f'YTou have already guessed {letter}')
-        else:
-            incorrect.append(letter)
-            mistakes += 1
-            display_hangman(mistakes)
-            print(f'Inccorect guesses: {incorrect}')
-print(game_word)
+            if letter in incorrect:
+                print(f'YTou have already guessed {letter}')
+            else:
+                incorrect.append(letter)
+                mistakes += 1
+                display_hangman(mistakes)
+                print(display_blanks(game_word, correct))
+                print(f'Inccorect guesses: {incorrect}')
+    print(game_word)
+    playagain = int(input('Game over! Would you like to play again? (1)Yes (0)No: '))
 
 #guessed = []
 #game_word = generate_word()
